@@ -1,9 +1,9 @@
-import Latihan1 from "@/components/latihan/Latihan1";
+import Homescreen from "@/components/tugas/tugas2";
 
 export default function Index() {
   return (
     <>
-      <Latihan1 />
+      <Homescreen />
     </>
   );
 }
