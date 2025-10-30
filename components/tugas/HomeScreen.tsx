@@ -1,28 +1,42 @@
 import { Ionicons } from "@expo/vector-icons";
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const notes = [
     {
         id: 1,
-        image: "@/assets/images/Logo-Notes.png",
+        image: require("@/assets/images/image-1.png"),
         title: "Belajar Mobile App",
         desc: "Mari belajar Mobile App dengan React Native.",
         date: "29-10-25"
     },
     {
         id: 2,
-        image: "@/assets/images/Logo-Notes.png",
+        image: require("@/assets/images/image-2.png"),
         title: "Belajar Web App",
         desc: "Mari belajar Web App dengan ReactJS dan Tailwind CSS.",
         date: "30-10-25"
+    },
+    {
+        id: 3,
+        image: require("@/assets/images/image-3.png"),
+        title: "Belajar Backend",
+        desc: "Mari belajar Backend dengan Node.js dan Express.",
+        date: "31-10-25"
+    },
+    {
+        id: 4,
+        image: require("@/assets/images/image-0.png"),
+        title: "Belajar Database",
+        desc: "Mari belajar Database dengan MySQL dan PostgreSQL.",
+        date: "01-11-25"
     }
 ];
 
 type Note = {
     id: number;
-    image: string;
+    image: ImageSourcePropType | {uri: string} ;
     title: string;
     desc: string;
     date: string;
@@ -33,7 +47,7 @@ const NoteItem = ({ item }: { item: Note }) => {
         <View style={styles.card}>
             <Image
                 style={{ width: 80, height: 80 }}
-                source={require("@/assets/images/Logo-Notes.png")}
+                source={item.image}
             />
             <View style={styles.cardContainer}>
                 <Text style={styles.cardTitle}>{item.title}</Text>
@@ -65,7 +79,8 @@ export default function Homescreen() {
                 data={notes}
                 renderItem={({ item }) => <NoteItem item={item} />} 
                 keyExtractor={(item) => item.id.toString()} 
-                contentContainerStyle={{ gap: 10 }} />
+                contentContainerStyle={{ gap: 10 }}
+                ListEmptyComponent={() => <EmptyNotes />} />
             </GestureHandlerRootView>
 
 
@@ -73,6 +88,14 @@ export default function Homescreen() {
                 <Ionicons name="add" size={32} color={"white"} />
             </TouchableOpacity>
         </SafeAreaView>
+    );
+}
+
+const EmptyNotes = () => {
+    return (
+        <View>
+            <Text>No Notes Available</Text>
+        </View>
     )
 }
 

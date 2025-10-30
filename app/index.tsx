@@ -1,4 +1,4 @@
-import Homescreen from "@/components/tugas/tugas2";
+import Homescreen from "@/components/tugas/HomeScreen";
 
 export default function Index() {
   return (
