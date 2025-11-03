@@ -3,40 +3,11 @@ import { FlatList, Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacit
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const notes = [
-    {
-        id: 1,
-        image: require("@/assets/images/image-1.png"),
-        title: "Belajar Mobile App",
-        desc: "Mari belajar Mobile App dengan React Native.",
-        date: "29-10-25"
-    },
-    {
-        id: 2,
-        image: require("@/assets/images/image-2.png"),
-        title: "Belajar Web App",
-        desc: "Mari belajar Web App dengan ReactJS dan Tailwind CSS.",
-        date: "30-10-25"
-    },
-    {
-        id: 3,
-        image: require("@/assets/images/image-3.png"),
-        title: "Belajar Backend",
-        desc: "Mari belajar Backend dengan Node.js dan Express.",
-        date: "31-10-25"
-    },
-    {
-        id: 4,
-        image: require("@/assets/images/image-0.png"),
-        title: "Belajar Database",
-        desc: "Mari belajar Database dengan MySQL dan PostgreSQL.",
-        date: "01-11-25"
-    }
-];
+const notes: Note[] = [];
 
 type Note = {
     id: number;
-    image: ImageSourcePropType | {uri: string} ;
+    image: ImageSourcePropType | { uri: string };
     title: string;
     desc: string;
     date: string;
@@ -75,12 +46,12 @@ export default function Homescreen() {
             </View>
 
             <GestureHandlerRootView style={styles.content}>
-                <FlatList 
-                data={notes}
-                renderItem={({ item }) => <NoteItem item={item} />} 
-                keyExtractor={(item) => item.id.toString()} 
-                contentContainerStyle={{ gap: 10 }}
-                ListEmptyComponent={() => <EmptyNotes />} />
+                <FlatList
+                    data={notes}
+                    renderItem={({ item }) => <NoteItem item={item} />}
+                    keyExtractor={(item) => item.id.toString()}
+                    contentContainerStyle={{ gap: 10, flexGrow: 1 }}
+                    ListEmptyComponent={() => <EmptyNotes />} />
             </GestureHandlerRootView>
 
 
@@ -93,8 +64,15 @@ export default function Homescreen() {
 
 const EmptyNotes = () => {
     return (
-        <View>
-            <Text>No Notes Available</Text>
+        <View style={styles.emptyContainer}>
+            <Image
+                style={{ width: 180, height: 180 }}
+                source={require("@/assets/images/empty.png")}
+            />
+            <Text style={styles.emptyTitle}>Add your first note</Text>
+            <Text style={styles.emptyDesc}>
+                Save your thoughts, tasks or inspiration
+            </Text>
         </View>
     )
 }
@@ -105,6 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
     },
     header: {
+        padding: 10,
         flexDirection: "row",
         alignItems: "center",
         gap: 2,
@@ -117,6 +96,24 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "700",
         color: "#FF5B13"
+    },
+    emptyTitle: {
+        paddingTop: 10,
+        fontSize: 18,
+        fontWeight: "600",
+        textAlign: "center",
+    },
+    emptyDesc: {
+        fontSize: 16,
+        fontWeight: "400",
+        textAlign: "center",
+        color: "#CBCBCB"
+    },
+    emptyContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 15,
     },
     content: {
         flex: 1,
