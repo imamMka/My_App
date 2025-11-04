@@ -1,9 +1,10 @@
-import Homescreen from "@/components/tugas/HomeScreen";
+// import Homescreen from "@/components/tugas/HomeScreen";
+import DetailScreen from "@/components/tugas/DetailScreen";
 
 export default function Index() {
   return (
     <>
-      <Homescreen />
+      <DetailScreen />
     </>
   );
 }
