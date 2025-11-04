@@ -24,10 +24,10 @@ export default function DetailScreen() {
             </ScrollView>
 
             <View style={styles.buttonCont}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.buttonDel}>
                     <Text style={{ color: "white" }}>Delete</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.buttonEdit}>
                     <Text style={{ color: "white" }}>Edit</Text>
                 </TouchableOpacity>
             </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "justify"
     },
-    button: {
+    buttonEdit: {
         backgroundColor: "#FF5B13",
         paddingVertical: 10,
         paddingHorizontal: 70,
@@ -75,6 +75,14 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         alignItems: "center",
         
+    },
+    buttonDel: {
+        backgroundColor: "red",
+        paddingVertical: 10,
+        paddingHorizontal: 70,
+        margin: 10,
+        borderRadius: 8,
+        alignItems: "center",
     },
     buttonCont: {
         flexDirection: "row",
