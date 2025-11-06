@@ -13,7 +13,7 @@ const images = [
 
 const data = 0;
 
-export default function AddScreen() {
+export default function UpdateScreen() {
     const [selectedImage, setSelectedImage] = useState<number>(0)
 
     return (
@@ -21,7 +21,7 @@ export default function AddScreen() {
             <View>
                 <View style={styles.appBar}>
                     <Ionicons name="arrow-back" size={24} color="#FF5B13" />
-                    <Text style={styles.appBarTitle}>Add Notes</Text>
+                    <Text style={styles.appBarTitle}>Update Notes</Text>
                 </View>
 
                 <View style={styles.form}>
@@ -44,8 +44,8 @@ export default function AddScreen() {
             </View>
 
 
-            <TouchableOpacity style={styles.buttonAdd}>
-                <Text style={{ color: "white" }}>Add</Text>
+            <TouchableOpacity style={styles.buttonUpdate}>
+                <Text style={{ color: "white" }}>Update</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     imageSelected: {
         borderColor: "#FF5B13",
     },
-    buttonAdd: {
+    buttonUpdate: {
         backgroundColor: "#FF5B13",
         paddingVertical: 10,
         paddingHorizontal: 70,
