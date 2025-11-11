@@ -6,12 +6,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function DetailScreen() {
     const router = useRouter();
-    const { id } = useLocalSearchParams();
-
-    const note = notes.find((note) => note.id === Number(id))
-
-
-    return ( 
+        const { id } = useLocalSearchParams();
+    
+        const note = notes.find((note) => note.id === Number(id))
+    return (
         <SafeAreaView style={styles.container}>
             <View style={styles.appBar}>
                 <TouchableOpacity onPress={() => router.back()}>
@@ -23,7 +21,7 @@ export default function DetailScreen() {
             <ScrollView>
                 <Image
                     style={{ width: "100%", height: 250 }}
-                    source={require("@/assets/images/image-1.png")}
+                    source={note?.image}
                 />
 
                 <View style={styles.content}>
